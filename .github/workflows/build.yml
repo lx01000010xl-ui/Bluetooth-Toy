@@ -46,15 +46,8 @@ jobs:
       - name: Build APK
         working-directory: ${{ env.PROJECT_DIR }}
         run: gradle assembleDebug --stacktrace
-
-      - name: Find APK
-        run: |
-          echo "APK files:"
-          find "$PROJECT_DIR" -type f -name "*.apk"
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: Bluetooth-Toy-APK
-          path: |
-            ${{ env.PROJECT_DIR }}/**/*.apk
+    .- name: Upload APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: Bluetooth-Toy-APK
+    path: app/build/outputs/apk/debug/*.apk
